@@ -1,5 +1,52 @@
 package Fachlogik.Medienverwaltung;
 
-public class Medium {
+import Fachlogik.Autor;
 
+public abstract class Medium {
+	
+	private String titel;
+	private String id;
+	private String genre;
+	private Autor autor;
+	private boolean ausgeliehen = false;
+
+	public void setTitel(String titel)
+	{
+		this.titel = titel;
+	}
+	public String getTitel()
+	{
+		return titel;
+	}
+	
+	public void setId(String id)
+	{
+		this.id = id;
+	}
+	
+	public String getId()
+	{
+		return id;
+	}
+	
+	public void setGenre(String genre)
+	{
+		this.genre = genre;
+	}
+	
+	public String getGenre()
+	{
+		return genre;
+	}
+	
+	public void setAutor(String autorVorname, String autorNachname)
+	{
+		this.autor = new Autor(autorVorname, autorNachname);
+	}
+	
+	public void setAusgeliehene(boolean ausgeliehen)
+	{
+		this.ausgeliehen = ausgeliehen;
+	}
+		
 }
