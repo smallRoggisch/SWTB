@@ -51,5 +51,11 @@ public class Medienverwaltung {
 		return null;	
 	}
 	
+
 	//TODO anzahl ausgeliehen ausgeben + sortierte Medienliste ausgeben -> sortiert nach id	
+public ArrayList<Medium> getAusgeliehene()
+{
+	return null;
 }
+}
+
