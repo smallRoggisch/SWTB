@@ -86,5 +86,11 @@ public class Medienverwaltung {
 	{
 		//TODO implemtiere das speichern
 	}
+	
+	public ArrayList<Medium> load()
+	{
+		//TODO implementiere laden
+		return null;
+	}
 }
 
