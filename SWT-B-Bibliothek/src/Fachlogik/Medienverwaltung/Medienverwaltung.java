@@ -1,6 +1,8 @@
 package Fachlogik.Medienverwaltung;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class Medienverwaltung {
 	
@@ -50,7 +52,6 @@ public class Medienverwaltung {
 		return null;	
 	}
 	
-
 	
 	public ArrayList<Medium> getAusgeliehene()
 	{
@@ -63,6 +64,22 @@ public class Medienverwaltung {
 			}
 		}
 		return ausgeliehene;
+	}
+	
+	public ArrayList<Medium> getSortedList()
+	{
+		ArrayList<Medium> sortedList = new ArrayList<Medium>();
+		sortedList = this.medien;
+		
+		Collections.sort(sortedList, new Comparator<Medium>(){
+
+			@Override
+			public int compare(Medium o1, Medium o2) {
+				return o1.getTitel().compareTo(o2.getTitel());
+			}			
+		});
+		
+		return sortedList;
 	}
 	
 	public void save()
