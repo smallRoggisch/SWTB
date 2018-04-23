@@ -48,5 +48,10 @@ public abstract class Medium {
 	{
 		this.ausgeliehen = ausgeliehen;
 	}
+	
+	public boolean istAusgeliehen()
+	{
+		return ausgeliehen;
+	}
 		
 }

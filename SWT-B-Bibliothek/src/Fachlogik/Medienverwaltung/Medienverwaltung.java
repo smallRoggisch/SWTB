@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Medienverwaltung {
 	
-	private List<Medium> medien = new ArrayList<Medium>();
+	private ArrayList<Medium> medien = new ArrayList<Medium>();
 	
 	public Medienverwaltung()
 	{
@@ -52,10 +52,19 @@ public class Medienverwaltung {
 	}
 	
 
-	//TODO anzahl ausgeliehen ausgeben + sortierte Medienliste ausgeben -> sortiert nach id	
-public ArrayList<Medium> getAusgeliehene()
-{
-	return null;
-}
+	
+	public ArrayList<Medium> getAusgeliehene()
+	{
+		ArrayList<Medium> ausgeliehene = new ArrayList<Medium>();
+		for (Medium medium : medien) 
+		{
+			if(medium.istAusgeliehen())
+			{
+				ausgeliehene.add(medium);
+			}
+		}
+		return ausgeliehene;
+	}
+	//TODO sortierte Medienliste ausgeben -> sortiert nach id	
 }
 
