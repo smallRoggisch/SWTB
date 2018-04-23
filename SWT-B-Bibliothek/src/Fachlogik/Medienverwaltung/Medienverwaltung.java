@@ -65,6 +65,11 @@ public class Medienverwaltung {
 		}
 		return ausgeliehene;
 	}
+	
+	public void save()
+	{
+		//TODO implemtiere das speichern
+	}
 	//TODO sortierte Medienliste ausgeben -> sortiert nach id	
 }
 
