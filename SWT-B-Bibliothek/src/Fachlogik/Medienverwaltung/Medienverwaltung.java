@@ -86,6 +86,5 @@ public class Medienverwaltung {
 	{
 		//TODO implemtiere das speichern
 	}
-	//TODO sortierte Medienliste ausgeben -> sortiert nach id	
 }
 
