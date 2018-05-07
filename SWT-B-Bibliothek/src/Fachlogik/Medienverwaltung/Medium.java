@@ -7,8 +7,9 @@ public abstract class Medium {
 	private String titel;
 	private String id;
 	private String genre;
-	private Autor autor;
+	protected Autor autor;
 	private boolean ausgeliehen = false;
+	
 
 	public void setTitel(String titel)
 	{

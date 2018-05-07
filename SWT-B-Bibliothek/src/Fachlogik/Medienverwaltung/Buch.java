@@ -4,7 +4,6 @@ import Fachlogik.Autor;
 
 public class Buch extends Medium{
 	
-	private Autor autor;
 	private String verlag;
 	
 	public Buch(String autorVorname, String autorNachname, String verlag, String titel, String id, String genre)
@@ -15,6 +14,15 @@ public class Buch extends Medium{
 		this.setId(id);
 		this.setGenre(genre);
 	}	
+	
+	public Buch(Autor autor, String verlag, String titel, String id, String genre)
+	{
+		this.autor = autor;
+		this.verlag = verlag;
+		this.setTitel(titel);
+		this.setId(id);
+		this.setGenre(genre);
+	}
 	
 	public void setVerlag(String verlag)
 	{
