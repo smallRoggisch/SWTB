@@ -16,7 +16,7 @@ public class Bibliothek
 	{
 		vc.start();
 		
-		
+		//unnötiger kommentar
 		String url = "jdbc:mysql://localhost:3306/bib?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 		String username = "admin";
 		String password = "admin";
