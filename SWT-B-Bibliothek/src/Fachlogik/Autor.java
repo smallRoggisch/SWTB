@@ -2,11 +2,13 @@ package Fachlogik;
 
 public class Autor {
 	
+	private int id;
 	private String autorVorname;
 	private String autorNachname;
 	
-	public Autor(String autorVorname, String autorNachname)
+	public Autor(String autorVorname, String autorNachname, int id)
 	{
+		this.id = id;
 		this.autorVorname = autorVorname;
 		this.autorNachname = autorNachname;
 	}
@@ -32,4 +34,8 @@ public class Autor {
 		return autorNachname;
 	}
 
+	public int getId()
+	{
+		return id;
+	}
 }

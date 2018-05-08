@@ -82,9 +82,32 @@ public class Medienverwaltung {
 		return sortedList;
 	}
 	
-	public void save()
+	public String save(Medium m)
 	{
-		//TODO implemtiere das speichern
+		String databasequerry = "";
+		if(m.getClass() == Buch.class)
+		{
+			Buch b = (Buch) m;
+			databasequerry = "insert into buch values(" 
+			+ b.getId() + ", '" 
+			+ b.getTitel() + "', '" 
+			+ b.getGenre() + "', '" 
+			+ b.getAutor().getId() + "', " 
+			+ b.istAusgeliehen() + ", '" 
+			+ b.getVerlag() + "');";
+			
+		}
+		else if(m.getClass() == CD.class)
+		{
+			CD cd = (CD) m;
+			databasequerry= "insert into cd values("
+			+ cd.getId() + ", '"
+			+ cd.getTitel() + "', '"
+			+ cd.getGenre() + "', '"
+			+ cd.getHerausgeber() + "', "
+			+ cd.istAusgeliehen() + ");";
+		}
+		return databasequerry;
 	}
 	
 	public ArrayList<Medium> load()

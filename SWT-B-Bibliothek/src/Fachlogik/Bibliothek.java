@@ -2,9 +2,11 @@ package Fachlogik;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import Fachlogik.Medienverwaltung.Medienverwaltung;
+import Fachlogik.Medienverwaltung.Medium;
 import Views.ViewController;
 
 public class Bibliothek 
@@ -22,14 +24,24 @@ public class Bibliothek
 		String username = "admin";
 		String password = "admin";
 		
-		try(Connection conneciton = DriverManager.getConnection(url,username,password))
+		
+		try
 		{
+			Connection connection = DriverManager.getConnection(url,username,password);
+			
+			
+			//connection.createStatement().executeUpdate(s);
+			ResultSet rs = connection.createStatement().executeQuery("select * from autor;");
 			System.out.println("Database connected!");
+			rs.next();
+			System.out.println(rs.getString(3));
+			
 		}
 		catch(SQLException e)
 		{
 			throw new IllegalStateException("Cannot connect the database", e);
 		}
+		
 	}
 	
 	
