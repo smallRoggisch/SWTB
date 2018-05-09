@@ -40,9 +40,9 @@ public abstract class Medium {
 		return genre;
 	}
 	
-	public void setAutor(String autorVorname, String autorNachname)
+	public void setAutor(String autorVorname, String autorNachname, int autorId)
 	{
-		this.autor = new Autor(autorVorname, autorNachname);
+		this.autor = new Autor(autorVorname, autorNachname, autorId);
 	}
 	
 	public void setAusgeliehene(boolean ausgeliehen)
