@@ -88,7 +88,6 @@ public class MediumAnlegenView extends JPanel implements ActionListener{
 
 		JPanel buchPanel = new JPanel();
 		autoren = vc.getAutorList();
-		System.out.println(autoren.get(0).getautorNachname());
 		String[] autorenNamen = new String[autoren.size()];
 		
 		for(int i = 0; i < autoren.size(); i++)
@@ -100,12 +99,15 @@ public class MediumAnlegenView extends JPanel implements ActionListener{
 		this.id = new JTextField(15);
 		this.genre = new JTextField(15);
 		this.comboBox = new JComboBox<String>(autorenNamen);
+		this.verlag = new JTextField(15);
 		buchPanel.add(new JLabel("Titel"));
 		buchPanel.add(this.title);
 		buchPanel.add(new JLabel("ID"));
 		buchPanel.add(this.id);
 		buchPanel.add(new JLabel("Genre"));
 		buchPanel.add(this.genre);
+		buchPanel.add(new JLabel("Verlag"));
+		buchPanel.add(this.verlag);
 		
 		buchPanel.add(this.comboBox);
 		buchPanel.add(ausgeliehenButton);
@@ -154,6 +156,7 @@ public class MediumAnlegenView extends JPanel implements ActionListener{
 	private void inputToBuch()
 	{
 		int position = this.comboBox.getSelectedIndex();
+		
 		System.out.println(position);
 		Autor autor = autoren.get(position);
 		String verlag = this.verlag.getText();
@@ -170,17 +173,14 @@ public class MediumAnlegenView extends JPanel implements ActionListener{
 	private void inputToCd()
 	{
 		int position = this.comboBox.getSelectedIndex();
-		System.out.println(position);
+		
 		Autor autor = autoren.get(position);
-		System.out.println(autor.getautorVorname()+autor.getautorNachname());
 		String herausgeber = this.herausgeber.getText();
-		System.out.println(herausgeber);
 		String titel = title.getText();
 		String id = this.id.getText();
 		String genre = this.genre.getText();
 		
 		CD cd = new CD(autor, herausgeber, titel, id, genre, ausgeliehenButton.isSelected());
-		System.out.println(position + " " + genre);
 		vc.saveCD(cd);
 	}
 
@@ -189,7 +189,6 @@ public class MediumAnlegenView extends JPanel implements ActionListener{
 		
 		if(e.getSource() == saveButton)
 		{
-			System.out.println("test");
 			if(buchButton.isSelected())
 			{
 				inputToBuch();
@@ -209,7 +208,6 @@ public class MediumAnlegenView extends JPanel implements ActionListener{
 			}
 
 			createCDPanel();
-			System.out.println("cd");
 		}
 		
 		else if(e.getActionCommand().equals(buchButtonString))
@@ -220,7 +218,6 @@ public class MediumAnlegenView extends JPanel implements ActionListener{
 			}
 			
 			createBuchPanel();
-			System.out.println("buch");
 		}
 				
 	}

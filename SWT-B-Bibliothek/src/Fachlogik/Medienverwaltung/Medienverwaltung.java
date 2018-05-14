@@ -118,6 +118,7 @@ public class Medienverwaltung {
 			if(m.getId().equals(medium.getId()))
 			{
 				medium.setAusgeliehen(true);
+				medium.save();
 			}
 		}
 	}
@@ -129,6 +130,7 @@ public class Medienverwaltung {
 			if(m.getId().equals(medium.getId()))
 			{
 				medium.setAusgeliehen(false);
+				medium.save();
 			}
 		}
 	}

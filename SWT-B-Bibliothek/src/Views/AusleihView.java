@@ -66,6 +66,7 @@ public class AusleihView extends JPanel implements ActionListener{
 		for(Medium m : mList)
 		{
 			medien[i] = listenString(m.getTitel(), m.getAutor().getautorNachname(), m.istAusgeliehen());
+			i++;
 		}
 	}
 
