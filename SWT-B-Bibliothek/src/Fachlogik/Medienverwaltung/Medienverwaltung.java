@@ -97,6 +97,7 @@ public class Medienverwaltung {
 	{
 		return autoren;
 	}
+	
 	public Autor getAutorbyId(int id)
 	{
 		Autor a = null;
@@ -108,6 +109,28 @@ public class Medienverwaltung {
 		}
 		}
 		return a;
+	}
+	
+	public void setAusgeliehen(Medium m)
+	{
+		for(Medium medium : medien)
+		{
+			if(m.getId().equals(medium.getId()))
+			{
+				medium.setAusgeliehen(true);
+			}
+		}
+	}
+	
+	public void setZurueckGegeben(Medium m)
+	{
+		for(Medium medium : medien)
+		{
+			if(m.getId().equals(medium.getId()))
+			{
+				medium.setAusgeliehen(false);
+			}
+		}
 	}
 }
 

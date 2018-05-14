@@ -12,16 +12,21 @@ import javax.swing.JPanel;
 import javax.swing.event.MenuEvent;
 import javax.swing.event.MenuListener;
 
+import Fachlogik.Medienverwaltung.Medienverwaltung;
+
 public class MainView implements ActionListener
 {
+	
+	ViewController vc;
 	String titel = "Bibliotheksverwaltung";
 	JFrame frame = new JFrame(titel);
 	JMenuBar menuBar = new JMenuBar();
 	JMenuItem menuAusleihen, menuAnlegen;
 	//JPanel ausleihe, anlegen;
 	
-	public MainView() 
+	public MainView(ViewController vc) 
 	{		
+		this.vc = vc;
 		buildWindow();
 	}
 	
@@ -52,14 +57,14 @@ public class MainView implements ActionListener
 		//Ausleih Menü
 		if(e.getSource() == menuAusleihen)
 		{
-			frame.add(new AusleihView());
+			frame.add(new AusleihView(this.vc));
 			frame.setVisible(true);
 		}
 				
 		//Anlegen Menü
 		else if(e.getSource() == menuAnlegen)
 		{
-			frame.add(new MediumAnlegenView());
+			frame.add(new MediumAnlegenView(this.vc));
 			frame.setVisible(true);
 		}
 		

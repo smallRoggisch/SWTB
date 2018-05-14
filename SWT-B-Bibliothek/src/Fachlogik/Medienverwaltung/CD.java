@@ -37,6 +37,7 @@ public class CD extends Medium{
 		+ this.getId() + ", '"
 		+ this.getTitel() + "', '"
 		+ this.getGenre() + "', '"
+		+ this.getAutor().getId() + "', "
 		+ this.getHerausgeber() + "', "
 		+ this.istAusgeliehen() + ");";
 		

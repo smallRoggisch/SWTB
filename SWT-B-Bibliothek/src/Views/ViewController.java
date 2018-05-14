@@ -1,15 +1,21 @@
 package Views;
 
+import java.util.ArrayList;
+
 import Fachlogik.Autor;
 import Fachlogik.Medienverwaltung.Buch;
 import Fachlogik.Medienverwaltung.CD;
+import Fachlogik.Medienverwaltung.Medienverwaltung;
 import Fachlogik.Medienverwaltung.Medium;
 
 public class ViewController 
 {	
-	public void start()
+	Medienverwaltung medienVerwaltung;
+	
+	public void start(Medienverwaltung mverwaltung)
 	{
-		MainView mv = new MainView();
+		MainView mv = new MainView(this);
+		medienVerwaltung = mverwaltung;
 	}
 	
 	//Methode zum zugriff auf bibliothek zum speichern, hört auf action listener
@@ -22,15 +28,27 @@ public class ViewController
 	{
 		cd.save();
 	}
-	
-	public void save(Medium m)
+
+	public void mediumAusgeliehen(Medium m)
 	{
-		
+		medienVerwaltung.setAusgeliehen(m);
 	}
 	
-	public Autor[] getAutorList()
+	public void mediumZurueckGegeben(Medium m)
+	{
+		medienVerwaltung.setZurueckGegeben(m);
+	}
+	
+	public ArrayList<Medium> getMedien()
+	{
+		ArrayList<Medium> mList = new ArrayList();
+		mList = medienVerwaltung.getSortedList();
+		return mList;
+	}
+	
+	public ArrayList<Autor> getAutorList()
 	{
 		//TODO test
-		return new Autor[]{new Autor("1", "2", 3)};
+		return medienVerwaltung.getAutoren();
 	}
 }

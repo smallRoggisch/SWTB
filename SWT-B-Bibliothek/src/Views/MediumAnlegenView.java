@@ -5,6 +5,7 @@ import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 import javax.swing.ButtonGroup;
@@ -19,6 +20,7 @@ import javax.swing.JTextField;
 import Fachlogik.Autor;
 import Fachlogik.Medienverwaltung.Buch;
 import Fachlogik.Medienverwaltung.CD;
+import Fachlogik.Medienverwaltung.Medienverwaltung;
 import Fachlogik.Medienverwaltung.Medium;
 
 public class MediumAnlegenView extends JPanel implements ActionListener{
@@ -32,15 +34,19 @@ public class MediumAnlegenView extends JPanel implements ActionListener{
 	
 	String cdButtonString = "Cd anlegen";
 	String buchButtonString = "Buch anlegen";
+	String ausgeliehenString = "ausgeliehen?";
 
-	Autor[] autoren;
+	ArrayList<Autor> autoren;
 	
 	JRadioButton cdButton = new JRadioButton(cdButtonString);
 	JRadioButton buchButton = new JRadioButton(buchButtonString);
 	
-	public MediumAnlegenView()
+	JRadioButton ausgeliehenButton = new JRadioButton(ausgeliehenString);
+	
+	public MediumAnlegenView(ViewController vc)
 	{		
-		vc = new ViewController();
+		this.vc = vc;
+		autoren = new ArrayList();
 		createPage();
 	}
 	
@@ -53,7 +59,8 @@ public class MediumAnlegenView extends JPanel implements ActionListener{
 		mainPanel.add(new JLabel("CD oder Buch anlegen?"));
 		
 		cdButton.setMnemonic(KeyEvent.VK_B);
-		cdButton.setActionCommand(cdButtonString);		
+		cdButton.setActionCommand(cdButtonString);	
+		cdButton.setSelected(true);
 		buchButton.setMnemonic(KeyEvent.VK_C);
 		buchButton.setActionCommand(buchButtonString);
 		
@@ -70,54 +77,55 @@ public class MediumAnlegenView extends JPanel implements ActionListener{
 		buchButton.addActionListener(this);
 		mainPanel.setVisible(true);
 		cdBuchPanel.setVisible(true);
+		createCDPanel();
+		
 		add(mainPanel);
 		add(cdBuchPanel);
 	}
 	
-	private void createCDPanel()
+	private void createBuchPanel()
 	{		
 
-		/*this.cdBuchPanel.add(new JButton("Hallo"));*/
-
-		System.out.println("test");	
+		JPanel buchPanel = new JPanel();
 		autoren = vc.getAutorList();
-		String[] autorenNamen = new String[autoren.length];
+		System.out.println(autoren.get(0).getautorNachname());
+		String[] autorenNamen = new String[autoren.size()];
 		
-		for(int i = 0; i < autoren.length; i++)
+		for(int i = 0; i < autoren.size(); i++)
 		{
-			autorenNamen[i] = autoren[i].getautorVorname() + " " + autoren[i].getautorNachname();
+			autorenNamen[i] = autoren.get(i).getautorVorname() + " " + autoren.get(i).getautorNachname();
 		}
 		
 		this.title = new JTextField(15);
 		this.id = new JTextField(15);
 		this.genre = new JTextField(15);
 		this.comboBox = new JComboBox<String>(autorenNamen);
-		this.cdBuchPanel.add(new JLabel("Titel"));
-		this.cdBuchPanel.add(this.title);
-		this.cdBuchPanel.add(new JLabel("ID"));
-		this.cdBuchPanel.add(this.id);
-		this.cdBuchPanel.add(new JLabel("Genre"));
-		this.cdBuchPanel.add(this.genre);
+		buchPanel.add(new JLabel("Titel"));
+		buchPanel.add(this.title);
+		buchPanel.add(new JLabel("ID"));
+		buchPanel.add(this.id);
+		buchPanel.add(new JLabel("Genre"));
+		buchPanel.add(this.genre);
 		
-		this.cdBuchPanel.add(this.comboBox);
+		buchPanel.add(this.comboBox);
+		buchPanel.add(ausgeliehenButton);
 		
-		/*this.comboBox.setVisible(true);
-		this.title.setVisible(true);
-		this.genre.setVisible(true);
-		this.id.setVisible(true);*/
+		this.cdBuchPanel.removeAll();
+		this.cdBuchPanel.add(buchPanel);
+		this.revalidate();
+	    this.repaint();
 		
-		revalidate();
-	    repaint();
 	}
 	
-	private void createBuchPanel()
+	private void createCDPanel()
 	{
+		JPanel cdPanel = new JPanel();
 		autoren = vc.getAutorList();
-		String[] autorenNamen = new String[autoren.length];
+		String[] autorenNamen = new String[autoren.size()];
 		
-		for(int i = 0; i < autoren.length; i++)
+		for(int i = 0; i < autoren.size(); i++)
 		{
-			autorenNamen[i] = autoren[i].getautorVorname() + " " + autoren[i].getautorNachname();
+			autorenNamen[i] = autoren.get(i).getautorVorname() + " " + autoren.get(i).getautorNachname();
 		}
 		
 		this.title = new JTextField(15);
@@ -125,35 +133,36 @@ public class MediumAnlegenView extends JPanel implements ActionListener{
 		this.genre = new JTextField(15);
 		this.herausgeber = new JTextField(15);
 		this.comboBox = new JComboBox<String>(autorenNamen);
-		this.cdBuchPanel.add(new JLabel("Titel"));
-		this.cdBuchPanel.add(this.title);
-		this.cdBuchPanel.add(new JLabel("ID"));
-		this.cdBuchPanel.add(this.id);
-		this.cdBuchPanel.add(new JLabel("Genre"));
-		this.cdBuchPanel.add(this.genre);
-		this.cdBuchPanel.add(new JLabel("Herausgeber"));
-		this.cdBuchPanel.add(this.herausgeber);
+		cdPanel.add(new JLabel("Titel"));
+		cdPanel.add(this.title);
+		cdPanel.add(new JLabel("ID"));
+		cdPanel.add(this.id);
+		cdPanel.add(new JLabel("Genre"));
+		cdPanel.add(this.genre);
+		cdPanel.add(new JLabel("Herausgeber"));
+		cdPanel.add(this.herausgeber);
+		cdPanel.add(ausgeliehenButton);
 		
+		cdPanel.add(this.comboBox);
 		
-		this.cdBuchPanel.add(this.comboBox);
-		
-		
-		revalidate();
-	    repaint();
+		this.cdBuchPanel.removeAll();
+		this.cdBuchPanel.add(cdPanel);;
+		this.revalidate();
+	    this.repaint();
 	}
 	
 	private void inputToBuch()
 	{
 		int position = this.comboBox.getSelectedIndex();
 		System.out.println(position);
-		Autor autor = autoren[position];
+		Autor autor = autoren.get(position);
 		String verlag = this.verlag.getText();
 		String titel = title.getText();
 		String id = this.id.getText();
 		String genre = this.genre.getText();
 		
 		
-		Buch buch = new Buch(autor, verlag, titel, id, genre);
+		Buch buch = new Buch(autor, verlag, titel, id, genre, ausgeliehenButton.isSelected());
 		System.out.println(position + " " + verlag);
 		vc.saveBuch(buch);
 	}
@@ -162,13 +171,16 @@ public class MediumAnlegenView extends JPanel implements ActionListener{
 	{
 		int position = this.comboBox.getSelectedIndex();
 		System.out.println(position);
-		Autor autor = autoren[position];
+		Autor autor = autoren.get(position);
+		System.out.println(autor.getautorVorname()+autor.getautorNachname());
 		String herausgeber = this.herausgeber.getText();
+		System.out.println(herausgeber);
 		String titel = title.getText();
 		String id = this.id.getText();
 		String genre = this.genre.getText();
 		
-		CD cd = new CD(autor, herausgeber, titel, id, genre);
+		CD cd = new CD(autor, herausgeber, titel, id, genre, ausgeliehenButton.isSelected());
+		System.out.println(position + " " + genre);
 		vc.saveCD(cd);
 	}
 
@@ -210,7 +222,7 @@ public class MediumAnlegenView extends JPanel implements ActionListener{
 			createBuchPanel();
 			System.out.println("buch");
 		}
-		
+				
 	}
 
 }

@@ -45,6 +45,11 @@ public abstract class Medium {
 		this.autor = new Autor(autorVorname, autorNachname, autorId);
 	}
 	
+	public Autor getAutor()
+	{
+		return this.autor;
+	}
+	
 	public void setAusgeliehen(boolean ausgeliehen)
 	{
 		this.ausgeliehen = ausgeliehen;

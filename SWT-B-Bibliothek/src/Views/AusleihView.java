@@ -1,31 +1,104 @@
 package Views;
 
 import java.awt.GridLayout;
+import java.awt.List;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JList;
 import javax.swing.JPanel;
 
-public class AusleihView extends JPanel {
+import Fachlogik.Medienverwaltung.Medienverwaltung;
+import Fachlogik.Medienverwaltung.Medium;
+
+public class AusleihView extends JPanel implements ActionListener{
 	
-	public AusleihView()
+	JPanel listPanel, buttonPanel;
+	JButton ausleihen, zurueckGegeben;
+	JList medienListe;
+	
+	ViewController vc;
+	
+	private ArrayList<Medium> mList;
+	private String[] medien;
+	
+	public AusleihView(ViewController vc)
 	{
-		GridLayout gridLayout = new GridLayout(5, 5);
+		this.vc = vc;
+		mList = new ArrayList();
+		setLayout(new GridLayout(1, 2));
+		listPanel = new JPanel();
+		buttonPanel = new JPanel();
 		
+		ausleihen = new JButton("ausleihen");
+		ausleihen.addActionListener(this);
+		ausleihen.setVisible(true);
 		
-		setLayout(gridLayout);
-		JButton button;
+		zurueckGegeben = new JButton("zurueck geben");
+		zurueckGegeben.addActionListener(this);
+		zurueckGegeben.setVisible(true);
+		
+		medienLaden();
+		buttonPanel.add(zurueckGegeben);
+		buttonPanel.add(ausleihen);
+		
 
-		button = new JButton();
-		button.setText("hallo");
-		button.setSize(50,50);
-		button.setVisible(true);
+		medienListe = new JList(medien);
+	
+		listPanel.add(medienListe);
 		
-		add(button);
-		
-
+		add(listPanel);
+		add(buttonPanel);
+		setVisible(true);
 		
 		//setVisible(true);
 	}
+	
+	private void medienLaden()
+	{
+		mList = vc.getMedien();
+		medien = new String[mList.size()];
+		int i = 0;
+		
+		for(Medium m : mList)
+		{
+			medien[i] = listenString(m.getTitel(), m.getAutor().getautorNachname(), m.istAusgeliehen());
+		}
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource() == ausleihen)
+		{
+			vc.mediumAusgeliehen(mList.get(medienListe.getSelectedIndex()));
+		}
+		
+		if(e.getSource() == zurueckGegeben)
+		{
+			vc.mediumZurueckGegeben(mList.get(medienListe.getSelectedIndex()));
+		}
+		
+	}
+	
+	
+	private String listenString(String titel, String autorNachname, boolean ausgeliehen)
+	{
+		String s;
+		if(ausgeliehen)
+		{
+			s = titel + ", " + autorNachname + ", ausgeliehen";
+		}
+		
+		else
+		{
+			s = titel + ", " + autorNachname + ", verfügbar";
+		}
+		
+		return s;
+	}
+
 
 }
