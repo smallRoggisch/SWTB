@@ -10,13 +10,14 @@ public class CD extends Medium{
 	
 	private String herausgeber;
 	
-	public CD(Autor autor, String herausgeber, String titel, String id, String genre)
+	public CD(Autor autor, String herausgeber, String titel, String id, String genre, boolean ausgeliehen)
 	{
 		this.autor = autor;
 		this.herausgeber = herausgeber;
 		this.setTitel(titel);
 		this.setId(id);
 		this.setGenre(genre);
+		this.setAusgeliehen(ausgeliehen);
 	}
 		
 	public void setHerausgeber(String herausgeber)

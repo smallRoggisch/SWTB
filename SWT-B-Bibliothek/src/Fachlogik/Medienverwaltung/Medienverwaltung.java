@@ -101,5 +101,17 @@ public class Medienverwaltung {
 	{
 		return autoren;
 	}
+	public Autor getAutorbyId(int id)
+	{
+		Autor a = null;
+		for (Autor autor : autoren) 
+		{
+		if(autor.getId() == id)
+		{
+			a = autor;
+		}
+		}
+		return a;
+	}
 }
 

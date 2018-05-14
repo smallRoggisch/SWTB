@@ -10,13 +10,14 @@ public class Buch extends Medium{
 	
 	private String verlag;
 		
-	public Buch(Autor autor, String verlag, String titel, String id, String genre)
+	public Buch(Autor autor, String verlag, String titel, String id, String genre, boolean ausgeliehen)
 	{
 		this.autor = autor;
 		this.verlag = verlag;
 		this.setTitel(titel);
 		this.setId(id);
 		this.setGenre(genre);
+		this.setAusgeliehen(ausgeliehen);
 	}
 	
 	public void setVerlag(String verlag)

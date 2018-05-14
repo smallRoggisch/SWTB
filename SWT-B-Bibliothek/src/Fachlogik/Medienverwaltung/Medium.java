@@ -8,7 +8,7 @@ public abstract class Medium {
 	private String id;
 	private String genre;
 	protected Autor autor;
-	private boolean ausgeliehen = false;
+	private boolean ausgeliehen;
 	
 
 	public void setTitel(String titel)
@@ -45,7 +45,7 @@ public abstract class Medium {
 		this.autor = new Autor(autorVorname, autorNachname, autorId);
 	}
 	
-	public void setAusgeliehene(boolean ausgeliehen)
+	public void setAusgeliehen(boolean ausgeliehen)
 	{
 		this.ausgeliehen = ausgeliehen;
 	}

@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import Fachlogik.Medienverwaltung.Buch;
+import Fachlogik.Medienverwaltung.CD;
 import Fachlogik.Medienverwaltung.Medienverwaltung;
 import Fachlogik.Medienverwaltung.Medium;
 import Views.ViewController;
@@ -60,6 +62,22 @@ public class Bibliothek
 				autor.add(a);
 			}
 			mv.setAutorList(autor);
+			
+			ResultSet rs2 = connection.createStatement().executeQuery("select * from cd;");
+			while(rs2.next())
+			{
+				
+				CD c = new CD(mv.getAutorbyId(rs2.getInt(4)), rs2.getString(6), rs2.getString(2), rs2.getString(1), rs2.getString(3),rs2.getBoolean(5));
+				mv.addCd(c);
+			}
+			
+			ResultSet rs3 = connection.createStatement().executeQuery("select * from buch;");
+			while(rs3.next())
+			{
+				
+				Buch b = new Buch(mv.getAutorbyId(rs3.getInt(4)), rs3.getString(6), rs3.getString(2), rs3.getString(1), rs3.getString(3),rs3.getBoolean(5));
+				mv.addBuch(b);
+			}
 			
 		}
 		catch(SQLException e)
