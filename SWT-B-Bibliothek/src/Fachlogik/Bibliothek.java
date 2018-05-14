@@ -13,15 +13,16 @@ public class Bibliothek
 {
 	static Views.ViewController vc = new ViewController();
 	static Medienverwaltung mv = new Medienverwaltung();
+	static final String url = "jdbc:mysql://localhost:3306/bib?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+	static final String username = "admin";
+	static final String password = "admin";
 	
 	public static void main(String[] args)
 	{
 		vc.start();
 		
 
-		String url = "jdbc:mysql://localhost:3306/bib?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-		String username = "admin";
-		String password = "admin";
+		
 		
 		
 		try
