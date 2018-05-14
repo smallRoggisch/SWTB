@@ -39,8 +39,8 @@ public class Buch extends Medium{
 	public void save()
 	{
 		String databasequerry;
-		databasequerry = "insert into buch values(" 
-		+ this.getId() + ", '" 
+		databasequerry = "insert into buch values('" 
+		+ this.getId() + "', '" 
 		+ this.getTitel() + "', '" 
 		+ this.getGenre() + "', '" 
 		+ this.getAutor().getId() + "', " 

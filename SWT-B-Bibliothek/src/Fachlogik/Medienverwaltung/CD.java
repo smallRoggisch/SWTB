@@ -33,8 +33,8 @@ public class CD extends Medium{
 	@Override
 	public void save() {
 		String databasequerry;
-		databasequerry= "insert into cd values("
-		+ this.getId() + ", '"
+		databasequerry= "insert into cd values('"
+		+ this.getId() + "', '"
 		+ this.getTitel() + "', '"
 		+ this.getGenre() + "', '"
 		+ this.getAutor().getId() + "', "
