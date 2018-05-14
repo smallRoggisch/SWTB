@@ -44,10 +44,6 @@ public class Bibliothek
 		{
 			throw new IllegalStateException("Cannot connect the database", e);
 		}
-		for (Autor autor : mv.getAutoren()) 
-		{
-			System.out.println(autor.getautorVorname() + autor.getautorNachname());
-		}
 	}
 	
 	public static void load()
@@ -74,7 +70,6 @@ public class Bibliothek
 			ResultSet rs3 = connection.createStatement().executeQuery("select * from buch;");
 			while(rs3.next())
 			{
-				
 				Buch b = new Buch(mv.getAutorbyId(rs3.getInt(4)), rs3.getString(6), rs3.getString(2), rs3.getString(1), rs3.getString(3),rs3.getBoolean(5));
 				mv.addBuch(b);
 			}

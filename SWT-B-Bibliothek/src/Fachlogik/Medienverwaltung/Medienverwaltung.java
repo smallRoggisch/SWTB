@@ -85,11 +85,7 @@ public class Medienverwaltung {
 		return sortedList;
 	}
 	
-	public ArrayList<Medium> load()
-	{
-		//TODO implementiere laden
-		return null;
-	}
+
 	
 	
 	public void setAutorList(ArrayList<Autor> autoren)
