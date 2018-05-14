@@ -22,7 +22,7 @@ public class Bibliothek
 	
 	public static void main(String[] args)
 	{
-		vc.start(mv);
+		
 		
 
 		
@@ -79,6 +79,7 @@ public class Bibliothek
 		{
 			throw new IllegalStateException("Cannot connect the database", e);
 		}
+		vc.start(mv);
 	}
 	
 	

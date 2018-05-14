@@ -36,10 +36,10 @@ public class CD extends Medium{
 		databasequerry= "insert into cd values('"
 		+ this.getId() + "', '"
 		+ this.getTitel() + "', '"
-		+ this.getGenre() + "', '"
-		+ this.getAutor().getId() + "', "
-		+ this.getHerausgeber() + "', "
-		+ this.istAusgeliehen() + ");";
+		+ this.getGenre() + "', "
+		+ this.autor.getId() +", "
+		+ this.istAusgeliehen() + ", '"
+		+ this.getHerausgeber()  + "');";
 		
 		String url = "jdbc:mysql://localhost:3306/bib?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 		String username = "admin";

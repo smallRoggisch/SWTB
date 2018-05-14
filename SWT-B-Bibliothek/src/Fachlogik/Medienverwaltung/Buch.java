@@ -42,8 +42,8 @@ public class Buch extends Medium{
 		databasequerry = "insert into buch values('" 
 		+ this.getId() + "', '" 
 		+ this.getTitel() + "', '" 
-		+ this.getGenre() + "', '" 
-		+ this.getAutor().getId() + "', " 
+		+ this.getGenre() + "', " 
+		+ this.getAutor().getId() + ", " 
 		+ this.istAusgeliehen() + ", '" 
 		+ this.getVerlag() + "');";
 
