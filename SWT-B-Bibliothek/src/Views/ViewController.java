@@ -27,9 +27,10 @@ public class ViewController
 	{
 		
 	}
+	
 	public Autor[] getAutorList()
 	{
-		//TODO
+		//TODO test
 		return new Autor[]{new Autor("1", "2", 3)};
 	}
 }
