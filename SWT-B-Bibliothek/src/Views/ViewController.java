@@ -14,4 +14,10 @@ public class ViewController
 	{
 		
 	}
+	
+	public String[] getAutorList()
+	{
+		//TODO
+		return null;
+	}
 }
