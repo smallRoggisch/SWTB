@@ -62,6 +62,21 @@ public class Buch extends Medium{
 		
 	}
 
-
+	public void updateBuch(boolean ausgeliehen)
+	{
+		String url = "jdbc:mysql://localhost:3306/bib?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+		String username = "admin";
+		String password = "admin";
+		try
+		{
+			Connection connection = DriverManager.getConnection(url,username,password);
+			String sql = "update buch set ausgeliehen = " + ausgeliehen + " where idbuch='" +getId() + "';";
+			connection.createStatement().executeUpdate(sql);
+		}
+		catch(SQLException e)
+		{
+			throw new IllegalStateException("Cannot connect the database", e);
+		}
+	}
 
 }
