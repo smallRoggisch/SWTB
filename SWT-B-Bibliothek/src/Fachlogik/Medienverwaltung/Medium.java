@@ -61,5 +61,6 @@ public abstract class Medium {
 	}
 	
 	abstract public void save();
+	abstract public void update(boolean ausgeliehen);
 		
 }

@@ -62,7 +62,7 @@ public class Buch extends Medium{
 		
 	}
 
-	public void updateBuch(boolean ausgeliehen)
+	public void update(boolean ausgeliehen)
 	{
 		String url = "jdbc:mysql://localhost:3306/bib?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 		String username = "admin";
