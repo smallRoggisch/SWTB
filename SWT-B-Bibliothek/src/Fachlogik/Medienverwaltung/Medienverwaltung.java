@@ -1,5 +1,6 @@
 package Fachlogik.Medienverwaltung;
 
+import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -118,7 +119,7 @@ public class Medienverwaltung {
 			if(m.getId().equals(medium.getId()))
 			{
 				medium.setAusgeliehen(true);
-				medium.save();
+				medium.update(medium.istAusgeliehen());
 			}
 		}
 	}
@@ -130,7 +131,7 @@ public class Medienverwaltung {
 			if(m.getId().equals(medium.getId()))
 			{
 				medium.setAusgeliehen(false);
-				medium.save();
+				medium.update(medium.istAusgeliehen());
 			}
 		}
 	}

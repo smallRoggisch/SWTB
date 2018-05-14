@@ -87,6 +87,7 @@ public class MediumAnlegenView extends JPanel implements ActionListener{
 	{		
 
 		JPanel buchPanel = new JPanel();
+		buchPanel.setLayout(new GridLayout(3,2));
 		autoren = vc.getAutorList();
 		String[] autorenNamen = new String[autoren.size()];
 		
@@ -122,6 +123,7 @@ public class MediumAnlegenView extends JPanel implements ActionListener{
 	private void createCDPanel()
 	{
 		JPanel cdPanel = new JPanel();
+		cdPanel.setLayout(new GridLayout(3,2));
 		autoren = vc.getAutorList();
 		String[] autorenNamen = new String[autoren.size()];
 		

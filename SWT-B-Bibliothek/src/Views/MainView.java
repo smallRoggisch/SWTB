@@ -57,6 +57,7 @@ public class MainView implements ActionListener
 		//Ausleih Menü
 		if(e.getSource() == menuAusleihen)
 		{
+			frame.getContentPane().removeAll();
 			frame.add(new AusleihView(this.vc));
 			frame.setVisible(true);
 		}
