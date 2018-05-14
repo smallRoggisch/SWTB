@@ -15,12 +15,12 @@ public class ViewController
 	//Methode zum zugriff auf bibliothek zum speichern, hört auf action listener
 	public void saveBuch(Buch buch)
 	{
-		
+		buch.save();
 	}
 	
 	public void saveCD(CD cd)
 	{
-		
+		cd.save();
 	}
 	
 	public void save(Medium m)

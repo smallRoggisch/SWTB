@@ -4,9 +4,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
+import Fachlogik.Autor;
+
 public class Medienverwaltung {
 	
 	private ArrayList<Medium> medien = new ArrayList<Medium>();
+	private ArrayList<Autor> autoren = new ArrayList<Autor>();
 	
 	public Medienverwaltung()
 	{
@@ -82,38 +85,21 @@ public class Medienverwaltung {
 		return sortedList;
 	}
 	
-	public String save(Medium m)
-	{
-		String databasequerry = "";
-		if(m.getClass() == Buch.class)
-		{
-			Buch b = (Buch) m;
-			databasequerry = "insert into buch values(" 
-			+ b.getId() + ", '" 
-			+ b.getTitel() + "', '" 
-			+ b.getGenre() + "', '" 
-			+ b.getAutor().getId() + "', " 
-			+ b.istAusgeliehen() + ", '" 
-			+ b.getVerlag() + "');";
-			
-		}
-		else if(m.getClass() == CD.class)
-		{
-			CD cd = (CD) m;
-			databasequerry= "insert into cd values("
-			+ cd.getId() + ", '"
-			+ cd.getTitel() + "', '"
-			+ cd.getGenre() + "', '"
-			+ cd.getHerausgeber() + "', "
-			+ cd.istAusgeliehen() + ");";
-		}
-		return databasequerry;
-	}
-	
 	public ArrayList<Medium> load()
 	{
 		//TODO implementiere laden
 		return null;
+	}
+	
+	
+	public void setAutorList(ArrayList<Autor> autoren)
+	{
+		this.autoren = autoren;
+	}
+	
+	public ArrayList<Autor> getAutoren()
+	{
+		return autoren;
 	}
 }
 

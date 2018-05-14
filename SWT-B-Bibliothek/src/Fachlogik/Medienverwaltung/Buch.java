@@ -1,5 +1,9 @@
 package Fachlogik.Medienverwaltung;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
 import Fachlogik.Autor;
 
 public class Buch extends Medium{
@@ -30,6 +34,33 @@ public class Buch extends Medium{
 		return autor;
 	}
 	
+	@Override
+	public void save()
+	{
+		String databasequerry;
+		databasequerry = "insert into buch values(" 
+		+ this.getId() + ", '" 
+		+ this.getTitel() + "', '" 
+		+ this.getGenre() + "', '" 
+		+ this.getAutor().getId() + "', " 
+		+ this.istAusgeliehen() + ", '" 
+		+ this.getVerlag() + "');";
+
+		String url = "jdbc:mysql://localhost:3306/bib?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+		String username = "admin";
+		String password = "admin";
+		try
+		{
+			Connection connection = DriverManager.getConnection(url,username,password);
+			connection.createStatement().executeUpdate(databasequerry);
+		}
+		catch(SQLException e)
+		{
+			throw new IllegalStateException("Cannot connect the database", e);
+		}
+		
+	}
+
 
 
 }

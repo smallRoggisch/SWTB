@@ -54,5 +54,7 @@ public abstract class Medium {
 	{
 		return ausgeliehen;
 	}
+	
+	abstract public void save();
 		
 }
