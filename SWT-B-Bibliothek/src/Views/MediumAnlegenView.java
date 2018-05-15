@@ -32,16 +32,16 @@ public class MediumAnlegenView extends JPanel implements ActionListener{
 	private JTextField title, id, genre, verlag, herausgeber;
 	private JComboBox<String> comboBox;
 	
-	String cdButtonString = "Cd anlegen";
-	String buchButtonString = "Buch anlegen";
-	String ausgeliehenString = "ausgeliehen?";
+	private String cdButtonString = "Cd anlegen";
+	private String buchButtonString = "Buch anlegen";
+	private String ausgeliehenString = "ausgeliehen?";
 
-	ArrayList<Autor> autoren;
+	private ArrayList<Autor> autoren;
 	
-	JRadioButton cdButton = new JRadioButton(cdButtonString);
-	JRadioButton buchButton = new JRadioButton(buchButtonString);
+	private JRadioButton cdButton = new JRadioButton(cdButtonString);
+	private JRadioButton buchButton = new JRadioButton(buchButtonString);
 	
-	JRadioButton ausgeliehenButton = new JRadioButton(ausgeliehenString);
+	private JRadioButton ausgeliehenButton = new JRadioButton(ausgeliehenString);
 	
 	public MediumAnlegenView(ViewController vc)
 	{		

@@ -18,13 +18,13 @@ import Fachlogik.Medienverwaltung.Medium;
 
 public class AusleihView extends JPanel implements ActionListener{
 	
-	JPanel listPanel, buttonPanel;
-	JButton ausleihen, zurueckGegeben;
-	JList medienListe;
+	private JPanel listPanel, buttonPanel;
+	private JButton ausleihen, zurueckGegeben;
+	private JList medienListe;
 	
-	DefaultListModel listModel;
+	private DefaultListModel listModel;
 	
-	ViewController vc;
+	private ViewController vc;
 	
 	private ArrayList<Medium> mList;
 	private String[] medien;
@@ -49,8 +49,6 @@ public class AusleihView extends JPanel implements ActionListener{
 		buttonPanel.add(zurueckGegeben);
 		buttonPanel.add(ausleihen);
 		
-		
-
 		medienListe = new JList();
 		setModel();
 		JScrollPane scrollPane = new JScrollPane(medienListe);
@@ -60,8 +58,6 @@ public class AusleihView extends JPanel implements ActionListener{
 		add(listPanel);
 		add(buttonPanel);
 		setVisible(true);
-		
-		//setVisible(true);
 	}
 	
 	private void medienLaden()
@@ -115,7 +111,6 @@ public class AusleihView extends JPanel implements ActionListener{
 	{
 		String string = "Fachlogik.Medienverwaltung.";
 		String s = "";
-		System.out.println(klasse.getTypeName());
 		if(klasse.getTypeName().equals(string + "Buch"))
 		{
 			
