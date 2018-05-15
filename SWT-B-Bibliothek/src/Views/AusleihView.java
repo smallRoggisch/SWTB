@@ -75,11 +75,19 @@ public class AusleihView extends JPanel implements ActionListener{
 		if(e.getSource() == ausleihen)
 		{
 			vc.mediumAusgeliehen(mList.get(medienListe.getSelectedIndex()));
+			medienLaden();
+			
+			this.revalidate();
+		    this.repaint();
 		}
 		
 		if(e.getSource() == zurueckGegeben)
 		{
 			vc.mediumZurueckGegeben(mList.get(medienListe.getSelectedIndex()));
+			medienLaden();
+			System.out.println(medien[0]);
+			this.revalidate();
+		    this.repaint();
 		}
 		
 	}

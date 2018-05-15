@@ -65,6 +65,7 @@ public class MainView implements ActionListener
 		//Anlegen Menü
 		else if(e.getSource() == menuAnlegen)
 		{
+			frame.getContentPane().removeAll();
 			frame.add(new MediumAnlegenView(this.vc));
 			frame.setVisible(true);
 		}
