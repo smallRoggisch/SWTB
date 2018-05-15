@@ -6,10 +6,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 import Fachlogik.Medienverwaltung.Medienverwaltung;
 import Fachlogik.Medienverwaltung.Medium;
@@ -19,6 +21,8 @@ public class AusleihView extends JPanel implements ActionListener{
 	JPanel listPanel, buttonPanel;
 	JButton ausleihen, zurueckGegeben;
 	JList medienListe;
+	
+	DefaultListModel listModel;
 	
 	ViewController vc;
 	
@@ -45,10 +49,13 @@ public class AusleihView extends JPanel implements ActionListener{
 		buttonPanel.add(zurueckGegeben);
 		buttonPanel.add(ausleihen);
 		
+		
 
-		medienListe = new JList(medien);
+		medienListe = new JList();
+		setModel();
+		JScrollPane scrollPane = new JScrollPane(medienListe);
 	
-		listPanel.add(medienListe);
+		listPanel.add(scrollPane);
 		
 		add(listPanel);
 		add(buttonPanel);
@@ -65,9 +72,19 @@ public class AusleihView extends JPanel implements ActionListener{
 		
 		for(Medium m : mList)
 		{
-			medien[i] = listenString(m.getTitel(), m.getAutor().getautorNachname(), m.istAusgeliehen());
+			medien[i] = listenString(m.getTitel(), m.getAutor().getautorNachname(), m.istAusgeliehen(), m.getClass());
 			i++;
 		}
+	}
+	
+	private void setModel()
+	{
+		listModel = new DefaultListModel<>();
+		for(String s : medien)
+		{
+			listModel.addElement(s);
+		}
+		medienListe.setModel(listModel);
 	}
 
 	@Override
@@ -76,7 +93,7 @@ public class AusleihView extends JPanel implements ActionListener{
 		{
 			vc.mediumAusgeliehen(mList.get(medienListe.getSelectedIndex()));
 			medienLaden();
-			
+			setModel();
 			this.revalidate();
 		    this.repaint();
 		}
@@ -85,6 +102,7 @@ public class AusleihView extends JPanel implements ActionListener{
 		{
 			vc.mediumZurueckGegeben(mList.get(medienListe.getSelectedIndex()));
 			medienLaden();
+			setModel();
 			System.out.println(medien[0]);
 			this.revalidate();
 		    this.repaint();
@@ -93,17 +111,30 @@ public class AusleihView extends JPanel implements ActionListener{
 	}
 	
 	
-	private String listenString(String titel, String autorNachname, boolean ausgeliehen)
+	private String listenString(String titel, String autorNachname, boolean ausgeliehen, Class<? extends Medium> klasse)
 	{
-		String s;
-		if(ausgeliehen)
+		String string = "Fachlogik.Medienverwaltung.";
+		String s = "";
+		System.out.println(klasse.getTypeName());
+		if(klasse.getTypeName().equals(string + "Buch"))
 		{
-			s = titel + ", " + autorNachname + ", ausgeliehen";
+			
+			s = "Medium: Buch, ";
 		}
 		
+		else if(klasse.getTypeName().equals(string + "CD"))
+		{
+			s = "Medium: CD, ";
+		}
+		if(ausgeliehen)
+		{
+			s += "Titel: " + titel + ", " + "Autor: " + autorNachname + ", ausgeliehen";
+		}
+		
+				
 		else
 		{
-			s = titel + ", " + autorNachname + ", verfügbar";
+			s += "Titel: " + titel + ", " + "Autor: " + autorNachname + ", verfügbar";
 		}
 		
 		return s;
