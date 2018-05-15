@@ -30,11 +30,6 @@ public class Buch extends Medium{
 		return verlag;
 	}
 	
-	public Autor getAutor()
-	{
-		return autor;
-	}
-	
 	@Override
 	public void save()
 	{
