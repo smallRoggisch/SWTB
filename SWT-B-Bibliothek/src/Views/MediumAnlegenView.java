@@ -110,6 +110,7 @@ public class MediumAnlegenView extends JPanel implements ActionListener{
 		buchPanel.add(new JLabel("Verlag"));
 		buchPanel.add(this.verlag);
 		
+		buchPanel.add(new JLabel("Autor"));
 		buchPanel.add(this.comboBox);
 		buchPanel.add(ausgeliehenButton);
 		
@@ -147,6 +148,7 @@ public class MediumAnlegenView extends JPanel implements ActionListener{
 		cdPanel.add(this.herausgeber);
 		cdPanel.add(ausgeliehenButton);
 		
+		cdPanel.add(new JLabel("Autor"));
 		cdPanel.add(this.comboBox);
 		
 		this.cdBuchPanel.removeAll();
