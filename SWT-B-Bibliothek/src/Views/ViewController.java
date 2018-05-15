@@ -22,11 +22,13 @@ public class ViewController
 	public void saveBuch(Buch buch)
 	{
 		buch.save();
+		medienVerwaltung.addBuch(buch);
 	}
 	
 	public void saveCD(CD cd)
 	{
 		cd.save();
+		medienVerwaltung.addCd(cd);
 	}
 
 	public void mediumAusgeliehen(Medium m)
@@ -41,6 +43,7 @@ public class ViewController
 	
 	public ArrayList<Medium> getMedien()
 	{
+		
 		ArrayList<Medium> mList = new ArrayList();
 		mList = medienVerwaltung.getSortedList();
 		return mList;
