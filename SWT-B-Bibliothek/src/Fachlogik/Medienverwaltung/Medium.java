@@ -2,8 +2,9 @@ package Fachlogik.Medienverwaltung;
 
 import Fachlogik.Autor;
 
-public abstract class Medium {
+public abstract class Medium implements java.io.Serializable{
 	
+	private static final long serialVersionUID = 1L;
 	private String titel;
 	private String id;
 	private String genre;

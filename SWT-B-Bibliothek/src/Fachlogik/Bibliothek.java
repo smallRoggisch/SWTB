@@ -12,8 +12,9 @@ import Fachlogik.Medienverwaltung.Medienverwaltung;
 import Fachlogik.Medienverwaltung.Medium;
 import Views.ViewController;
 
-public class Bibliothek 
+public final class Bibliothek 
 {
+	private static Bibliothek uniqueInstance = null;
 	static Views.ViewController vc = new ViewController();
 	static Medienverwaltung mv = new Medienverwaltung();
 	static final String url = "jdbc:mysql://localhost:3306/bib?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
@@ -22,10 +23,6 @@ public class Bibliothek
 	
 	public static void main(String[] args)
 	{
-		
-		
-
-		
 		
 		
 		try
@@ -82,6 +79,13 @@ public class Bibliothek
 		vc.start(mv);
 	}
 	
-	
+	public static Bibliothek instance()
+	{
+		if(uniqueInstance == null)
+		{
+			uniqueInstance = new Bibliothek();
+		}
+		return uniqueInstance;
+	}
 	
 }
