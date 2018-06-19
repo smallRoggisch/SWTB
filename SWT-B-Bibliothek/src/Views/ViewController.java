@@ -18,8 +18,8 @@ public class ViewController implements Subject
 	public void start(Medienverwaltung mverwaltung)
 	{
 		MainView mv = new MainView(this);
-		observers = new ArrayList<>();
 		medienVerwaltung = mverwaltung;
+		observers = new ArrayList<>();
 	}
 	
 	//Methode zum zugriff auf bibliothek zum speichern, hört auf action listener
